@@ -8,8 +8,8 @@ use Config;
 use IO::Socket;
 use Readonly;
 
-Readonly::Array our @EXPORT_OK => qw(check_socket);
-Readonly::Scalar our $ERROR_MESSAGE => '';
+our $ERROR_MESSAGE;
+Readonly::Array our @EXPORT_OK => qw(check_socket $ERROR_MESSAGE);
 
 our $VERSION = 0.01;
 
