@@ -14,31 +14,37 @@ Readonly::Array our @EXPORT_OK => qw(check_socket $ERROR_MESSAGE);
 our $VERSION = 0.01;
 
 sub check_socket {
-	if ($ENV{PERL_CORE} and $Config{'extensions'} !~ /\bSocket\b/) {
+	my ($config_hr, $os, $env_hr) = @_;
+
+	$config_hr ||= \%Config;
+	$os ||= $^O;
+	$env_hr ||= \%ENV;
+
+	if ($env_hr->{PERL_CORE} and $config_hr->{'extensions'} !~ /\bSocket\b/) {
 		$ERROR_MESSAGE = 'Socket extension unavailable.';
 		return 0;
 	}
 
-	if ($ENV{PERL_CORE} and $Config{'extensions'} !~ /\bIO\b/) {
+	if ($env_hr->{PERL_CORE} and $config_hr->{'extensions'} !~ /\bIO\b/) {
 		$ERROR_MESSAGE = 'IO extension unavailable.';
 		return 0;
 	}
 
-	if ($^O eq 'os2') {
+	if ($os eq 'os2') {
 		eval { IO::Socket::pack_sockaddr_un('/foo/bar') || 1 };
 		if ($@ =~ /not implemented/) {
-			$ERROR_MESSAGE = 'os2: Compiled without TCP/IP stack v4.';
+			$ERROR_MESSAGE = "$os: Compiled without TCP/IP stack v4.";
 			return 0;
 		}
 	}
 
-	if ($^O =~ m/^(?:qnx|nto|vos)$/ ) {
-		$ERROR_MESSAGE = "$^O: UNIX domain sockets not implemented.";
+	if ($os =~ m/^(?:qnx|nto|vos)$/ ) {
+		$ERROR_MESSAGE = "$os: UNIX domain sockets not implemented.";
 		return 0;
 	}
 
-	if ($^O eq 'MSWin32') {
-		if ($ENV{CONTINUOUS_INTEGRATION}) {
+	if ($os eq 'MSWin32') {
+		if ($env_hr->{CONTINUOUS_INTEGRATION}) {
 			# https://github.com/Perl/perl5/issues/17429
 			$ERROR_MESSAGE = "$^O: Skip sockets on CI";
 			return 0;
@@ -46,7 +52,7 @@ sub check_socket {
 
 		# https://github.com/Perl/perl5/issues/17575
 		if (! eval { socket(my $sock, PF_UNIX, SOCK_STREAM, 0) }) {
-			$ERROR_MESSAGE = "$^O: AF_UNIX unavailable or disabled.";
+			$ERROR_MESSAGE = "$os: AF_UNIX unavailable or disabled.";
 			return 0;
 		}
 	}
