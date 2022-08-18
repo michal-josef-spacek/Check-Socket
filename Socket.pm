@@ -46,7 +46,7 @@ sub check_socket {
 	if ($os eq 'MSWin32') {
 		if ($env_hr->{CONTINUOUS_INTEGRATION}) {
 			# https://github.com/Perl/perl5/issues/17429
-			$ERROR_MESSAGE = "$os: Skip sockets on CI";
+			$ERROR_MESSAGE = "$os: Skip sockets on CI.";
 			return 0;
 		}
 
@@ -108,7 +108,7 @@ Returns 0/1.
                  IO extension unavailable.
                  $^O: AF_UNIX unavailable or disabled.
                  $^O: Compiled without TCP/IP stack v4.
-                 $^O: Skip sockets on CI
+                 $^O: Skip sockets on CI.
                  $^O: UNIX domain sockets not implemented.
 
 =head1 EXAMPLE
