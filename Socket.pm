@@ -11,7 +11,7 @@ use Readonly;
 our $ERROR_MESSAGE;
 Readonly::Array our @EXPORT_OK => qw(check_socket $ERROR_MESSAGE);
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 sub check_socket {
 	my ($config_hr, $os, $env_hr) = @_;
