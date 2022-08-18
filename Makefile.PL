@@ -25,7 +25,7 @@ requires 'Readonly' => 0;
 resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Check-Socket/issues';
 resources 'homepage' => 'https://github.com/michal-josef-spacek/Check-Socket';
 resources 'repository' => 'git://github.com/michal-josef-spacek/Check-Socket';
-test_requires 'English' => 0;
+test_requires 'Config' => 0;
 test_requires 'Test::More' => 0;
 test_requires 'Test::NoWarnings' => 0;
 tests_recursive;
