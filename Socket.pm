@@ -63,3 +63,108 @@ sub check_socket {
 1;
 
 __END__
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+Check::Socket - Check socket communication functionality.
+
+=head1 SYNOPSIS
+
+ use Check::Socket qw(check_socket $ERROR_MESSAGE);
+
+ my $ret = check_socket();
+ print $ERROR_MESSAGE."\n";
+
+=head1 DESCRIPTION
+
+There is need of check for socket communication functionality in tests.
+Actually we have many duplicated and not same check code in distributions. Sic!
+
+Intent of this module is create common code for check and test all behaviours.
+Extra thing is error message which describe issue.
+
+=head1 SUBROUTINES
+
+=head2 C<check_socket>
+
+ my $ret = check_socket();
+
+Check possibility of socket communication functionality on system.
+Return value is 1 as possible use of socket functionality or 0 as not possible use of
+socket functionality.
+If return value is 0, set C<$ERROR_MESSAGE> variable.
+
+Returns 0/1.
+
+=head1 ERRORS
+
+ check_socket():
+         Set $ERROR_MESSAGE variable if $ret is 0:
+                 Socket extension unavailable.
+                 IO extension unavailable.
+                 $^O: AF_UNIX unavailable or disabled.
+                 $^O: Compiled without TCP/IP stack v4.
+                 $^O: Skip sockets on CI
+                 $^O: UNIX domain sockets not implemented.
+
+=head1 EXAMPLE
+
+=for comment filename=check_socket.pl
+
+ use strict;
+ use warnings;
+
+ use Check::Socket qw(check_socket $ERROR_MESSAGE);
+
+ if (check_socket()) {
+         print "We could use socket communication.\n";
+ } else {
+         print "We couldn't use socket communication.\n";
+         print "Error message: $ERROR_MESSAGE\n";
+ }
+
+ # Output on Unix:
+ # We could use socket communication.
+
+=head1 DEPENDENCIES
+
+L<Config>,
+L<Exporter>,
+L<IO::Socket>,
+L<Readonly>.
+
+=head1 SEE ALSO
+
+=over
+
+=item L<Check::Fork>
+
+Check fork functionality.
+
+=back
+
+=head1 REPOSITORY
+
+L<https://github.com/michal-josef-spacek/Check-Socket>
+
+=head1 AUTHOR
+
+Michal Josef Špaček L<mailto:skim@cpan.org>
+
+L<http://skim.cz>
+
+=head1 LICENSE AND COPYRIGHT
+
+© 2021-2022 Michal Josef Špaček
+
+BSD 2-Clause License
+
+=head1 VERSION
+
+0.02
+
+=cut
