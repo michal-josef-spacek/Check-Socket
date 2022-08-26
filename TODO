@@ -3,7 +3,8 @@ TODO
 3. Add real outputs to doc example
 4. Add tests.
 5. Add Check::Pipe to SEE ALSO section in doc.
-6.
+6. Improve Check::Socket::HardcodedUsage
+7.
 
 Applied
 =======

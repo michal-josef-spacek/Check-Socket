@@ -1,4 +1,5 @@
 0.02
+ - Add Check::Socket::HardcodedUsage doc.
  - Add example to doc for test of fork and socket functionality.
  - Fix test dependencies.
  - Regen README file.
