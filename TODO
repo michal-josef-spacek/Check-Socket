@@ -4,7 +4,10 @@ TODO
 4. Add tests.
 5. Add Check::Pipe to SEE ALSO section in doc.
 6. Improve Check::Socket::HardcodedUsage
-7.
+7. UNIX socket are supported on Windows from Socket.pm > 2.029 and Windows 1803
+https://www.perlmonks.org/?node_id=241450
+8. Add check for concrete socket? Like AF_UNIX described at 7)
+9.
 
 Applied
 =======
