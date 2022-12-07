@@ -27,8 +27,8 @@ no_index:
 requires:
   Config: 0
   Exporter: 0
-  IO::Socket: 0
   Readonly: 0
+  Socket: 0
   perl: 5.6.2
 resources:
   bugtracker: https://github.com/michal-josef-spacek/Check-Socket/issues

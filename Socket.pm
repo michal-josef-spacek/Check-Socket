@@ -5,8 +5,8 @@ use strict;
 use warnings;
 
 use Config;
-use IO::Socket;
 use Readonly;
+use Socket;
 
 our $ERROR_MESSAGE;
 Readonly::Array our @EXPORT_OK => qw(check_socket $ERROR_MESSAGE);
@@ -157,8 +157,8 @@ Returns 0/1.
 
 L<Config>,
 L<Exporter>,
-L<IO::Socket>,
-L<Readonly>.
+L<Readonly>,
+L<Socket>.
 
 =head1 SEE ALSO
 
