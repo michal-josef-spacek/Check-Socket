@@ -1,3 +1,5 @@
+0.04
+
 0.03 2022-12-08T00:02:54+01:00
  - Fix dependecy to Socket (instead of IO::Socket).
  - Improve and fix test to catch real situations.
