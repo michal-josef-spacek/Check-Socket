@@ -26,6 +26,7 @@ resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Check-Socket/i
 resources 'homepage' => 'https://github.com/michal-josef-spacek/Check-Socket';
 resources 'repository' => 'git://github.com/michal-josef-spacek/Check-Socket';
 test_requires 'Config' => 0;
+test_requires 'Socket' => 0;
 test_requires 'Test::More' => 0;
 test_requires 'Test::NoWarnings' => 0;
 tests_recursive;

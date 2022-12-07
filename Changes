@@ -1,4 +1,5 @@
 0.03
+ - Improve and fix test to catch real situations.
 
 0.02 2022-08-26T12:09:40+02:00
  - Add Check::Socket::HardcodedUsage doc.
