@@ -7,7 +7,6 @@ TODO
 7. UNIX socket are supported on Windows from Socket.pm > 2.029 and Windows 1803
 https://www.perlmonks.org/?node_id=241450
 8. Add check for concrete socket? Like AF_UNIX described at 7)
-9. Add diag() to 05-check_socket.t. To diagnose all situations.
 10.
 
 Applied
@@ -17,3 +16,6 @@ OK [20220818] skim
 
 1. How to test?
 OK [20220818] skim
+
+9. Add diag() to 05-check_socket.t. To diagnose all situations.
+OK [20221208] skim
